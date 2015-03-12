@@ -3,3 +3,6 @@
 <% @bands.each do |band| %>
   <div> <%= link_to "#{band.name}", band_url(band)  %> </div>
 <% end %>
+
+<br>
+<%= link_to "New band", new_band_url, method: :get %>

@@ -1,3 +1,21 @@
 <h1><%= @album.title %></h1>
 
 <%= @album.to_json %>
+<h2>Tracks</h2>
+<% @album.tracks.each do |track| %>
+<div><%= link_to "#{track.title}", album_url(track) %></div>
+<% end %>
+
+<br>
+<%= link_to "New track", new_album_track_url(@album.id) %>
+
+<br>
+
+<h2>Band</h2>
+<div><%= link_to "#{@album.band.name}", band_url(@album.band), method: :get %></div>
+
+<h2>Options</h2>
+
+<br>
+<div><%= link_to "Edit album", edit_album_url(@album), method: :get %></div>
+<div><%= link_to "Delete album", album_url(@album), method: :delete %></div>
