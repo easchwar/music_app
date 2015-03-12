@@ -1,0 +1,14 @@
+<% url = band.persisted? ? band_url(band) : bands_url %>
+
+<form action="<%= url %>" method="POST">
+  <% if band.persisted? %>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+
+  <%= csrf_input %>
+
+  <label>Name
+    <input type="text" name="band[name]" value="<%= band.name %>">
+  </label>
+  <input type="submit" value="Submit">
+</form>

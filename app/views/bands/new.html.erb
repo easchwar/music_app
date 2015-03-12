@@ -2,10 +2,4 @@
 
 <%= render 'shared/errors' %>
 
-<form action="<%= bands_url %>" method="POST">
-  <%= csrf_input %>
-  <label>Name
-    <input type="text" name="band[name]">
-  </label>
-  <input type="submit" value="Submit">
-</form>
+<%= render 'form', band: @band %>
