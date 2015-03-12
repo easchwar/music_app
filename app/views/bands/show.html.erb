@@ -1,0 +1,13 @@
+<h1><%= @band.name %></h1>
+<div><%= @band.to_json %></div>
+<h2>Albums</h2>
+<% @band.albums.each do |album| %>
+  <div><%= link_to "#{album.title}", album_url(album) %></div>
+<% end %>
+
+<br>
+<%= link_to "New album", new_band_album_url(@band.id) %>
+
+<br>
+
+<%= link_to "Delete band", band_url(@band), method: :delete %>

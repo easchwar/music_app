@@ -1,0 +1,30 @@
+<h1>New Album</h1>
+
+<%= render 'shared/errors' %>
+
+<form action="<%= albums_url %>" method="POST">
+  <%= csrf_input %>
+
+  <label>Title
+    <input type="text" name="album[title]" value="<%= @album.title %>">
+  </label>
+  <br>
+  <label>Band
+    <select name="album[band_id]">
+      <% Band.all.each do |band| %>
+        <option <%= "selected" if band.id.to_s == params[:band_id] %> value="<%= band.id %>">
+          <%= band.name %>
+        </option>
+      <% end %>
+    </select>
+  </label>
+
+  <label>Studio Recording
+    <input type="radio" name="album[recording]" value="Studio" <%= "checked" if @album.recording == "Studio" %> >
+  </label>
+  <label>Live
+    <input type="radio" name="album[recording]" value="Live" <%= "checked" if @album.recording == "Live" %> >
+  </label>
+  <br>
+  <input type="submit" value="Submit">
+</form>
