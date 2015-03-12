@@ -28,20 +28,16 @@ class User < ActiveRecord::Base
   end
 
   def self.generate_session_token
-    SecureRandom::urlsafe_base64
-  end
-
-  def reset_session_token!
-    token = User.generate_session_token
-    while User.exists?(session_token: self.session_token)
+    token = SecureRandom::urlsafe_base64
+    while User.exists?(session_token: token)
       token = User.generate_session_token
     end
-    self.session_token = token
     token
   end
 
-  def ensure_session_token
-    self.session_token ||= reset_session_token!
+  def reset_session_token!
+    self.session_token = User.generate_session_token
+    self.save!
   end
 
   def password=(password)
@@ -51,5 +47,11 @@ class User < ActiveRecord::Base
 
   def is_password?(password)
     BCrypt::Password.new(password_digest).is_password?(password)
+  end
+
+  private
+
+  def ensure_session_token
+    self.session_token ||= User.generate_session_token
   end
 end
