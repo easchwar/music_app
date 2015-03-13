@@ -9,7 +9,12 @@
 <body>
 
 <% if current_user %>
-  <%= button_to "Log Out", session_url, method: :delete  %>
+  <div> <%= current_user.email %></div>
+  <div> <%= button_to "Log Out", session_url, method: :delete  %> </div>
+<% else %>
+<div> <%= link_to "Sign Up", new_user_url, method: :get  %> or
+      <%= link_to "Sign In", new_session_url, method: :get  %></div>
+
 <% end %>
 
 <%= yield %>

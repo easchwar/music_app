@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     if @user
       log_in_user!
-      redirect_to user_url(@user)
+      redirect_to bands_url
     else
       flash[:errors] = ["Invalid login"]
       @user = User.new(email: params[:user][:email])

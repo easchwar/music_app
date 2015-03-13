@@ -1,5 +1,7 @@
 <h1>Sign up</h1>
 
+<%= render 'shared/errors' %>
+
 <form action="<%= users_url %>" method="POST">
   <input type="hidden"
     name="authenticity_token"
@@ -10,7 +12,7 @@
   </label>
   <br>
   <label>Password
-    <input type="password" name="user[password]">
+    <input type="password" name="user[password]" value="">
   </label>
 
   <input type="submit" value="Submit">
