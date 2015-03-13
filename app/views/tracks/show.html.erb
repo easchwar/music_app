@@ -1,3 +1,14 @@
 <h1><%= @track.title %></h1>
 
 <%= @track.to_json %>
+<h2>Lyrics</h2>
+<p><%= @track.lyrics %></p>
+<br>
+
+<h2>Album</h2>
+<div><%= link_to "#{@track.album.title}", album_url(@track.album), method: :get %></div>
+
+<h2>Options</h2>
+
+<div><%= link_to "Edit track", edit_track_url(@track), method: :get %></div>
+<div><%= link_to "Delete track", track_url(@track), method: :delete %></div>

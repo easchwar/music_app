@@ -3,7 +3,7 @@
 <%= @album.to_json %>
 <h2>Tracks</h2>
 <% @album.tracks.each do |track| %>
-<div><%= link_to "#{track.title}", album_url(track) %></div>
+<div><%= link_to "#{track.title}", track_url(track) %></div>
 <% end %>
 
 <br>
